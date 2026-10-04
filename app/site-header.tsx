@@ -3,17 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "./logo.png";
 import logoAlt from "./logo-alt.png";
-import TrackingModal from "./tracking-modal";
 
 export default function SiteHeader() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
-  const [trackingOpen, setTrackingOpen] = useState(false);
-  const closeTracking = useCallback(() => setTrackingOpen(false), []);
 
   useEffect(() => {
     const updateHeader = () => setScrolled(!isHome || window.scrollY > 36);
@@ -29,11 +26,11 @@ export default function SiteHeader() {
     </Link>
     <nav aria-label="Navegación principal">
       <Link href="/#nosotros">Nosotros</Link><Link href="/#servicios">Servicios</Link><Link href="/#operacion">Operación</Link><Link href="/contacto">Contacto</Link>
-      <button className="trackingNav" type="button" onClick={() => setTrackingOpen(true)}>Seguimiento</button>
+      <Link className="trackingNav" href="/seguimiento">Seguimiento</Link>
     </nav>
     <div className="headerActions">
-      <button className="trackingMobile" type="button" onClick={() => setTrackingOpen(true)} aria-label="Abrir seguimiento de pedidos">Seguimiento</button>
+      <Link className="trackingMobile" href="/seguimiento">Seguimiento</Link>
       <a className="portal" href="https://portal.transportefwd.pe">Acceso extranet <span>↗</span></a>
     </div>
-  </header>{trackingOpen && <TrackingModal open onClose={closeTracking} />}</>;
+  </header></>;
 }

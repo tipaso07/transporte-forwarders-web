@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Source_Serif_4 } from "next/font/google";
+import { Lora, Poppins } from "next/font/google";
 import Assistant from "./assistant";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
@@ -12,10 +12,11 @@ const poppins = Poppins({
   display: "swap",
 });
 
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
-  style: ["normal", "italic"],
+  style: ["italic"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${poppins.variable} ${sourceSerif.variable} h-full antialiased`}
+      className={`${poppins.variable} ${lora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <SiteHeader />
