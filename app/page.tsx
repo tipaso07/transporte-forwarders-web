@@ -1,8 +1,6 @@
 import Image from "next/image";
-import logo from "./logo.png";
-import Assistant from "./assistant";
 import HeroSlider from "./hero-slider";
-import SiteHeader from "./site-header";
+import QuoteSection from "./quote-section";
 
 const servicios = [
   { number: "01", title: "Transporte de carga", text: "Planificación y traslado de carga según volumen, ruta y condiciones operativas." },
@@ -13,8 +11,6 @@ const servicios = [
 
 export default function Home() {
   return <main>
-    <SiteHeader />
-
     <HeroSlider />
 
     <section className="about" id="nosotros">
@@ -37,12 +33,6 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="quote" id="cotiza">
-      <div><p className="tag">COTIZACIONES</p><h2>Cuéntanos sobre tu<br/><em>próximo envío.</em></h2><p>Completa la información inicial y el equipo comercial podrá evaluar tu requerimiento.</p></div>
-      <form><label>Nombre o empresa<input name="name" placeholder="Ej. Empresa S.A.C." /></label><label>Correo o teléfono<input name="contact" placeholder="Datos de contacto" /></label><label>Origen y destino<input name="route" placeholder="Ej. Callao — Arequipa" /></label><label>Detalles del servicio<textarea name="details" rows={3} placeholder="Tipo de carga, peso, fecha y requisitos" /></label><button type="button">Enviar solicitud <span>→</span></button><small>Formulario demostrativo. Se conectará al canal comercial oficial de la empresa.</small></form>
-    </section>
-
-    <footer id="contacto"><div><Image src={logo} alt="Transporte Forwarders" /><p>Soluciones de transporte y logística para empresas en Perú.</p></div><div className="footerLinks"><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#cotiza">Cotizaciones</a></div><small>© {new Date().getFullYear()} Transporte Forwarders S.A.C. Todos los derechos reservados.</small></footer>
-    <Assistant />
+    <QuoteSection />
   </main>;
 }

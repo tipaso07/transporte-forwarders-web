@@ -52,14 +52,16 @@ export default function Assistant() {
   const [branch, setBranch] = useState<BranchKey>("start");
   const [messages, setMessages] = useState<Message[]>([{ id: 1, author: "bot", text: welcome }]);
   const endRef = useRef<HTMLDivElement>(null);
+  const messageId = useRef(2);
 
   useEffect(() => {
     if (open) endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, open]);
 
   function choose(choice: Choice) {
-    const stamp = Date.now();
-    setMessages((current) => [...current, { id: stamp, author: "user", text: choice.label }, { id: stamp + 1, author: "bot", text: choice.reply }]);
+    const userId = messageId.current++;
+    const botId = messageId.current++;
+    setMessages((current) => [...current, { id: userId, author: "user", text: choice.label }, { id: botId, author: "bot", text: choice.reply }]);
     setBranch(choice.next);
   }
 

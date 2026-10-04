@@ -57,9 +57,6 @@ export default function HeroSlider() {
     <div className="heroRail">
       <div className="slideCount"><span>0{active + 1}</span><i/><span>0{slides.length}</span></div>
       <div className="slideDots">{slides.map((slide, index) => <button className={index === active ? "active" : ""} onClick={() => goTo(index)} key={slide.image} aria-label={`Mostrar imagen ${index + 1}`}><span /></button>)}</div>
-      <div className="slideArrows"><button onClick={() => goTo(active - 1)} aria-label="Imagen anterior">←</button><button onClick={() => goTo(active + 1)} aria-label="Imagen siguiente">→</button></div>
     </div>
-
-    <div className="heroScroll"><span>DESPLÁZATE</span><i /></div>
   </section>;
 }
